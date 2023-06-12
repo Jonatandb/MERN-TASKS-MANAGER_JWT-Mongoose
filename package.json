@@ -1,0 +1,16 @@
+{
+  "name": "mern-tasks-manager_jwt-mongoose",
+  "version": "1.0.0",
+  "description": "Fullstack React-Express Tasks Manager App with JWT Auth, Mongoose and more",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["jonatandb", "Nodejs", "MERN", "CRUD", "React"],
+  "author": "https://github.com/Jonatandb",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
