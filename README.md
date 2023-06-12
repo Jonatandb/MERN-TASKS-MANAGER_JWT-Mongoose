@@ -5,3 +5,5 @@ With JWT Auth, Mongoose and more...
 - npm run dev
 
 
+### Visited sites:
+- JWT: https://jwt.io/
