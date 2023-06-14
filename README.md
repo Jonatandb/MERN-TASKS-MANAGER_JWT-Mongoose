@@ -8,7 +8,8 @@ With JWT Auth, Mongoose and more...
   - http://localhost:3000/api/register
   - http://localhost:3000/api/login
   - http://localhost:3000/api/logout
-  - http://localhost:3000/api/profile
+  - http://localhost:3000/api/profile  (Authenticated)
+  - http://localhost:3000/api/tasks    (Authenticated CRUD)
 
 ### Visited sites:
 - JWT: https://jwt.io/
