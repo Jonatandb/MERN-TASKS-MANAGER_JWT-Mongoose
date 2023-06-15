@@ -12,4 +12,5 @@ With JWT Auth, Mongoose and more...
   - http://localhost:3000/api/tasks    (Authenticated CRUD)
 
 ### Visited sites:
-- JWT: https://jwt.io/
+- JWT: JSON Web Token https://jwt.io/
+- Zod: TypeScript-first schema validation with static type inference https://zod.dev/
