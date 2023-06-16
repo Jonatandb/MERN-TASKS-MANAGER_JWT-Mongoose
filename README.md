@@ -22,3 +22,4 @@ With JWT Auth, Mongoose and more...
 - Vite: Next Generation Frontend Tooling https://vitejs.dev/guide/
 - Tailwindcss: https://tailwindcss.com/
 - React Router: https://reactrouter.com/en/main
+- Reacr Hook Form: https://react-hook-form.com/

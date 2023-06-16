@@ -3,6 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "keywords": [
+    "jonatandb",
+    "Nodejs",
+    "MERN",
+    "CRUD",
+    "React"
+  ],
+  "author": "https://github.com/Jonatandb",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +18,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
     "react-router-dom": "^6.13.0"
   },
   "devDependencies": {
