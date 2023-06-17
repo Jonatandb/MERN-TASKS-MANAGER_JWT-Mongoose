@@ -7,33 +7,29 @@ import ProfilePage from './pages/ProfilePage'
 import TasksPage from './pages/TasksPage'
 import AddEditTaskPage from './pages/AddEditTaskPage'
 import ProtectedRoute from './ProtectedRoute'
+import { TasksProvider } from './context/TasksContext'
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
+      <TasksProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route path='/profile' element={<ProfilePage />} />
-            <Route path='/tasks' element={<TasksPage />} />
-            <Route path='/add-task' element={<AddEditTaskPage />} />
-            <Route path='/tasks/:id' element={<AddEditTaskPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route element={<ProtectedRoute />}>
+              <Route path='/profile' element={<ProfilePage />} />
+              <Route path='/tasks' element={<TasksPage />} />
+              <Route path='/add-task' element={<AddEditTaskPage />} />
+              <Route path='/tasks/:id' element={<AddEditTaskPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </TasksProvider>
     </AuthProvider>
   )
 }
 
 export default App
-
-
-
-
-
-
-
