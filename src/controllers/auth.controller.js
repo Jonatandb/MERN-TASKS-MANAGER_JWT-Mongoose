@@ -1,12 +1,15 @@
 import User from '../models/user.model.js'
 import bcrypt from 'bcryptjs'
 import { createAccessToken } from '../utils/jwt.js'
+import jwt from 'jsonwebtoken'
+import { TOKEN_SECRET } from '../config.js'
 
 export const register = async (req, res) => {
   const { username, password, email } = req.body
   try {
     const userFound = await User.findOne({ email })
-    if (userFound) return res.status(400).json({ message: 'The email is already in use'})
+    if (userFound)
+      return res.status(400).json({ message: 'The email is already in use' })
 
     const passwordHash = await bcrypt.hash(password, 10)
     const newUser = new User({
@@ -28,7 +31,7 @@ export const register = async (req, res) => {
       updatedAt: userSaved.updatedAt,
     })
   } catch (error) {
-    res.status(500).json({ message: error.message})
+    res.status(500).json({ message: error.message })
   }
 }
 
@@ -44,8 +47,8 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: 'Incorrect password' })
 
     const token = await createAccessToken({ id: userFound.id })
-
     res.cookie('token', token)
+
     res.json({
       id: userFound.id,
       username: userFound.username,
@@ -77,5 +80,36 @@ export const profile = async (req, res) => {
     email: userFound.email,
     createdAt: userFound.createdAt,
     updatedAt: userFound.updatedAt,
+  })
+}
+
+export const verifyToken = async (req, res) => {
+  const { token } = req.cookies
+
+  if (!token) return res.status(401).json({ message: 'Unauthorized' })
+
+  jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+    if (err) {
+      res.cookie('token', '', {
+        httpOnly: true,
+        expires: new Date(0),
+      })
+      return res.status(401).json({ message: 'Unauthorized' })
+    }
+
+    const userFound = await User.findById(user.id)
+    if (!userFound) {
+      res.cookie('token', '', {
+        httpOnly: true,
+        expires: new Date(0),
+      })
+      return res.status(401).json({ message: 'Unauthorized' })
+    }
+
+    res.json({
+      id: userFound.id,
+      username: userFound.username,
+      email: userFound.email,
+    })
   })
 }
