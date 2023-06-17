@@ -20,6 +20,7 @@ With JWT Auth, Mongoose and more...
 - JWT: JSON Web Token https://jwt.io/
 - Zod: TypeScript-first schema validation with static type inference https://zod.dev/
 - Vite: Next Generation Frontend Tooling https://vitejs.dev/guide/
-- Tailwindcss: https://tailwindcss.com/
+- TailwindCSS: https://tailwindcss.com/
+- TailwindCSS Playground: https://play.tailwindcss.com/
 - React Router: https://reactrouter.com/en/main
 - Reacr Hook Form: https://react-hook-form.com/

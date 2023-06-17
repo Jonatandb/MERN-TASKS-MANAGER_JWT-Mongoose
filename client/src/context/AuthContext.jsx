@@ -1,15 +1,7 @@
-import { createContext, useState, useContext } from 'react'
-import { registerRequest } from '../api/auth'
+import { createContext, useState, useEffect } from 'react'
+import { loginRequest, registerRequest } from '../api/auth'
 
 export const AuthContext = createContext()
-
-export const useAuth = () => {
-  const context = useContext(AuthContext)
-  if (!context) {
-    throw new Error('useAuth must be used within a AuthProvider')
-  }
-  return context
-}
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
@@ -22,16 +14,45 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data)
       setIsAuthenticated(true)
     } catch (error) {
-      console.log(error);
-      setErrors(error.response.data)
+      if (Array.isArray(error.response.data)) {
+        setErrors(error.response.data)
+      } else {
+        setErrors([error.response.data.message])
+      }
     }
   }
+
+  const signin = async user => {
+    try {
+      const res = await loginRequest(user)
+      setUser(res.data)
+      setIsAuthenticated(true)
+    } catch (error) {
+      if (Array.isArray(error.response.data)) {
+        setErrors(error.response.data)
+      } else {
+        setErrors([error.response.data.message])
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (errors.length > 0) {
+      const timerId = setTimeout(() => {
+        setErrors([])
+      }, 5000)
+      return () => {
+        clearTimeout(timerId)
+      }
+    }
+  }, [errors])
 
   return (
     <AuthContext.Provider
       value={{
         user,
         signup,
+        signin,
         isAuthenticated,
         errors,
       }}

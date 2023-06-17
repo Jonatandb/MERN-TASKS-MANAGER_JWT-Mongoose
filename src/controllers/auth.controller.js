@@ -6,7 +6,7 @@ export const register = async (req, res) => {
   const { username, password, email } = req.body
   try {
     const userFound = await User.findOne({ email })
-    if(userFound) return res.status(400).json(['The email is already in use'])
+    if (userFound) return res.status(400).json({ message: 'The email is already in use'})
 
     const passwordHash = await bcrypt.hash(password, 10)
     const newUser = new User({
@@ -28,7 +28,7 @@ export const register = async (req, res) => {
       updatedAt: userSaved.updatedAt,
     })
   } catch (error) {
-    res.status(500).json([error.message])
+    res.status(500).json({ message: error.message})
   }
 }
 
@@ -37,10 +37,11 @@ export const login = async (req, res) => {
 
   try {
     const userFound = await User.findOne({ email })
-    if(!userFound) return res.status(404).json({ message: 'User not found' })
+    if (!userFound) return res.status(404).json({ message: 'User not found' })
 
     const isMathPassword = await bcrypt.compare(password, userFound.password)
-    if(!isMathPassword) return res.status(400).json({ message: 'Incorrect password' })
+    if (!isMathPassword)
+      return res.status(400).json({ message: 'Incorrect password' })
 
     const token = await createAccessToken({ id: userFound.id })
 
@@ -58,9 +59,9 @@ export const login = async (req, res) => {
 }
 
 export const logout = (req, res) => {
-  res.cookie('token', "", {
+  res.cookie('token', '', {
     httpOnly: true,
-    expires: new Date(0)
+    expires: new Date(0),
   })
   return res.sendStatus(200)
 }
@@ -68,7 +69,7 @@ export const logout = (req, res) => {
 export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id)
 
-  if(!userFound) return res.status(400).json({ message: 'User not found' })
+  if (!userFound) return res.status(400).json({ message: 'User not found' })
 
   return res.json({
     id: userFound.id,
