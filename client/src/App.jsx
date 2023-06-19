@@ -8,12 +8,14 @@ import TasksPage from './pages/TasksPage'
 import AddEditTaskPage from './pages/AddEditTaskPage'
 import ProtectedRoute from './ProtectedRoute'
 import { TasksProvider } from './context/TasksContext'
+import NavBar from './components/NavBar'
 
 function App() {
   return (
     <AuthProvider>
       <TasksProvider>
         <BrowserRouter>
+        <NavBar />
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginPage />} />
