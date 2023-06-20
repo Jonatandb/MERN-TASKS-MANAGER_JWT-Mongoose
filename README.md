@@ -23,4 +23,5 @@ With JWT Auth, Mongoose and more...
 - TailwindCSS: https://tailwindcss.com/
 - TailwindCSS Playground: https://play.tailwindcss.com/
 - React Router: https://reactrouter.com/en/main
-- Reacr Hook Form: https://react-hook-form.com/
+- React Hook Form: https://react-hook-form.com/
+- Day.js: https://day.js.org/

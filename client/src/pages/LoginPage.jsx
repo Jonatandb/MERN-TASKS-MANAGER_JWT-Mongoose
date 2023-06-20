@@ -29,7 +29,8 @@ export default function LoginPage() {
             {error}
           </div>
         ))}
-        <h1 className='text-2xl font-bold'>Login</h1>
+
+        <h1 className='text-3xl font-bold my-2'>Login</h1>
 
         <form onSubmit={onSubmit}>
           <input
@@ -52,7 +53,7 @@ export default function LoginPage() {
           <div className='flex flex-col items-center'>
             <button
               type='submit'
-              className='bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-4'
+              className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'
             >
               Login
             </button>
@@ -60,7 +61,10 @@ export default function LoginPage() {
         </form>
 
         <p className='flex gap-x-2 justify-between mt-3'>
-          Don&apos;t have an account? <Link className='text-sky-500' to='/register'>Sign up</Link>
+          Don&apos;t have an account?
+          <Link className='text-sky-500' to='/register'>
+            Sign up
+          </Link>
         </p>
       </div>
     </div>

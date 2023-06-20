@@ -26,7 +26,7 @@ export function TasksProvider({ children }) {
   }, [])
 
   const createTask = async task => {
-    await createTaskRequest()
+    await createTaskRequest(task)
   }
 
   const deleteTask = async id => {

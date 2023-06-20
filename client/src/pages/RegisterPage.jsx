@@ -28,7 +28,8 @@ export default function RegisterPage() {
             {error}
           </div>
         ))}
-        <h1 className='text-2xl font-bold'>Register</h1>
+
+        <h1 className='text-3xl font-bold my-2'>Register</h1>
 
         <form onSubmit={onSubmit}>
           <input
@@ -61,7 +62,7 @@ export default function RegisterPage() {
           <div className='flex flex-col items-center'>
             <button
               type='submit'
-              className='bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-4'
+              className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'
             >
               Register
             </button>
