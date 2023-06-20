@@ -1,6 +1,10 @@
 # Fullstack React-Express: Tasks Manager App
 With JWT Auth, Mongoose and more...
 
+<p align="center">
+  <img src="TasksManager.gif" alt="Fullstack React-Express: Tasks Manager App | Jonatandb"/>
+</p>
+
 ### Starting the server:
 - npm run dev
 
